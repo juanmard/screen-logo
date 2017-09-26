@@ -8,7 +8,7 @@ Los bloques que describen el proyecto del ***screen-logo*** se han pensado para 
 
 El diagramade bloques y su relación se puede ver en el siguiente esquema.
 
-![diagrama-bloques.png](https://raw.githubusercontent.com/juanmard/screen-logo/master/doc/images/diagrama-bloques.png)
+![diagrama-bloques.png](images/diagrama-bloques.png)
 
 ## Código Verilog.
 Para el código HDL de descripción de bloques se ha usado Verilog. La idea es utilizar herramientas libres en el desarrollo del proyecto. A la hora de escribir el código simplemente se han trasladado los diagramas de bloques en los siguientes ficheros:
@@ -27,23 +27,23 @@ Para cargar la imagen que vamos a animar haciéndola rebotar por la pantalla, ne
 Si quieres generar tu propio logotipo debes realizar los siguientes pasos:
 - Abrimos la imagen con en el programa GIMP y cambiamos a un modo indexado de representación de la imagen.
 
-![logo-indexado.png](https://raw.githubusercontent.com/juanmard/screen-logo/master/doc/images/logo-indexado.png)
+![logo-indexado.png](images/logo-indexado.png)
 
 - Convertimos la imagen con paleta óptima de dos colores.
 
-![logo-paleta.png](https://raw.githubusercontent.com/juanmard/screen-logo/master/doc/images/logo-paleta.png)
+![logo-paleta.png](images/logo-paleta.png)
 
 - Esto nos generará una imagen binaria con los colores verde y blanco. Comprobamos el mapa de colores y podemos encontrar que asigna el índice cero al verde y el uno al blanco. Aunque esto siempre se puede modificar en el código Verilog, podemos reordenar el mapa de colores para una asignación más lógica (el cero como fondo y el uno como color).
 
-![logo-reordenar-mapa.png](https://raw.githubusercontent.com/juanmard/screen-logo/master/doc/images/logo-reordenar-mapa.png)
+![logo-reordenar-mapa.png](images/logo-reordenar-mapa.png)
 
 - Una vez reordenado el mapa de colores, si no lo hicimos anteriormente, es la hora de recortar la imagen lo máximo posible para que se usen los mínimos bits al representar la imagen. Posteriormente se escala.
 
-![logo-escalar-menu.png](https://raw.githubusercontent.com/juanmard/screen-logo/master/doc/images/logo-escalar-menu.png)
+![logo-escalar-menu.png](images/logo-escalar-menu.png)
 
 - En nuestro caso elegimos, por aprovechar recursos, un tamaño inferior a *100x100* sin que deforme en exceso la imagen.
 
-![logo-escalar.png](https://raw.githubusercontent.com/juanmard/screen-logo/master/doc/images/logo-escalar.png)
+![logo-escalar.png](images/logo-escalar.png)
 
 - Una vez escalada la imagen guardamos (exportamos) en formato PNG. Esta imagen se utilizará ahora desde *Matlab* para cargar y procesar los bits según la matriz creada a partir de la propia imagen. Para ello se ejecutan las siguientes líneas de código.
 
