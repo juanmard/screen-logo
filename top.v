@@ -22,7 +22,7 @@ module top (
             output wire red_monitor,     // Red VGA signal (pin 1 male monitor).
             output wire green_monitor,   // Green VGA signal (pin 2 male monitor).
             output wire blue_monitor,    // Blue VGA signal (pin 3 male monitor).
-            output wire sound,           // PWM signal for the sound (for a future). 
+            output wire [1:0] code_sound,// PWM signal for the sound (for a future). 
             input wire  inc_vel,         // Increment logo velocity. 
             input wire  dec_vel          // Decrement logo velocity.
         );
@@ -30,8 +30,6 @@ module top (
     reg [9:0] x_px;
     reg [9:0] y_px;
     wire [2:0] color_px;
-    wire [1:0] code_sound;
-    wire mute;
     
     // Instanciate 'vga_controller' module.
     vga_controller
@@ -47,8 +45,9 @@ module top (
                     .x_px(x_px),                    // X position for actual pixel.
             		.y_px(y_px)                     // Y position for actual pixel.
                     );
-        
+       
     // Instanciate 'sound_controller' module.
+    /*
     sound_controller
     sound_controller01 (
                         .clk (clk),
@@ -56,7 +55,8 @@ module top (
                         .code_sound (code_sound),
                         .sound (sound)
                       );
-    
+   */
+
     // Instanciate 'logo' module.
     logo
     logo01 (
@@ -68,7 +68,7 @@ module top (
             .mute(mute),                    // Mute signal for a sound.
             .code_sound(code_sound),        // Code sound for a sound controller (for a future). 
             .inc_vel (inc_vel),             // Increment logo velocity.
-            .dec_vel (dec_vel),             // Decrement logo velocity.
+            .dec_vel (dec_vel)             // Decrement logo velocity.
           );
 
 endmodule

@@ -1,16 +1,33 @@
 //
 module sound_controller (
-                input       clk,          // System clock.
-                input       mute,         // Silence sound output. 
-                input [2:0] code_sound,   // Play this code sound.
-                output wire sound         // Output in PWM of sound.
+                input wire       clk,          // System clock.
+                input wire       mute,         // Silence sound output. 
+                input wire [2:0] code_sound,   // Play this code sound.
+                output wire      sound         // Output in PWM of sound.
              );
 
-    always @(posedge clk) begin
+    // Sounds definition.
+    parameter [1:0] ping = 2'b00;
+    parameter [1:0] pong = 2'b01;
+    parameter [1:0] go   = 2'b10;
+    parameter [1:0] stop = 2'b11;
+
+	
+    always @(posedge clk)
+    begin
         if (mute)
-            sound = 0'b0;
+            sound = 1'b0;
         else
-            sound <= code_sound[1];
+			case (code_sound)
+				ping:
+            		sound <= code_sound[0];
+				pong:
+            		sound <= code_sound[0];
+			 	go:
+            		sound <= code_sound[1];
+				stop:
+					sound <= code_sound[1];
+			endcase
     end
     
 endmodule

@@ -34,8 +34,8 @@ module graphics (
     parameter height_logo = 96;
 
     // Position x and y from image (128x128 pixels).
-    reg [6:0] x_img;
-    reg [6:0] y_img;
+    reg [9:0] x_img;
+    reg [9:0] y_img;
     reg pixel;
    
     // Instance of image logo.

@@ -28,9 +28,6 @@ module vga_controller (
             output reg [9:0] y_px           // Y position for actual pixel.
          );
 
-	// Pixel clock.
-    wire px_clk;
-
     // Generated values for pixel clock of 25.175Mhz and 60Hz frame frecuency.
     // $ icepll -o 25.175MHz
     //
@@ -48,6 +45,9 @@ module vga_controller (
     //
     // FILTER_RANGE: 1 (3'b001)
     //
+	// Pixel clock.
+    wire px_clk;
+
     SB_PLL40_CORE #(.FEEDBACK_PATH("SIMPLE"),
                     .PLLOUT_SELECT("GENCLK"),
                     .DIVR(4'b0000),
@@ -90,7 +90,22 @@ module vga_controller (
       green_monitor <= 0;
       blue_monitor <= 0;
     end
-   
+
+	// Asynchronous reset.
+/*
+	always @(clr)
+	begin
+			x_px <= 0;
+			y_px <= 0;
+			hc <= 0;
+			vc <= 0;
+			red_monitor <= 0;
+			green_monitor <= 0;
+			blue_monitor <= 0;
+	end
+*/
+    
+    // Calculate line and pixels.
     always @(posedge px_clk)
     begin
         // Keep counting until the end of the line.
@@ -125,7 +140,7 @@ module vga_controller (
     // is automatically included in the sensitivty list. In this case, it would be
     // equivalent to the following: always @(hc, vc)
     // Assignment statements can only be used on type "reg" and should be of the "blocking" type: =   
-    always @(posedge clk)
+    always @(posedge px_clk)
     begin
         // First check if we are within vertical active video range.
         if (activevideo == 1)

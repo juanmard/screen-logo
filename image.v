@@ -16,8 +16,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 module image (
                 input  wire clk,            // System clock.
-                input  wire [6:0] x_img,    // X position in image. 
-                input  wire [6:0] y_img,    // Y position in image.
+                input  wire [9:0] x_img,    // X position in image. 
+                input  wire [9:0] y_img,    // Y position in image.
                 output reg  pixel           // Pixel (B&W) in x and y positon.
              );
 

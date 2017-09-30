@@ -27,9 +27,18 @@ module logo (
             );
     
     // Registers with logo position. 
-    reg [9:0] x_logo;
-    reg [9:0] y_logo;
-
+    reg [10:0] x_logo;
+    reg [10:0] y_logo;
+/*
+    always @(posedge clk)
+    begin
+        if (clr)
+        begin
+            x_logo = (640-80)/2;
+            y_logo = (480-96)/2;
+        end
+    end
+*/  
     // Instance of dinamic part of logo.
     dinamic
     dinamic01 (
