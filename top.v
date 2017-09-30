@@ -35,7 +35,6 @@ module top (
     vga_controller
     vga_controller01 (
                     .clk (clk),                     // Input clock: 12MHz
-                    .clr (clr),                     // Asynchronous reset
                     .color_px (color_px),           // Color RGB (16 colors) for actual pixel.
                     .hsync (hsync),                 // Horizontal sync out
                     .vsync (vsync),                 // Vertical sync out
@@ -43,7 +42,8 @@ module top (
                     .green_monitor (green_monitor), // GREEN vga output
                     .blue_monitor (blue_monitor),   // BLUE vga output
                     .x_px(x_px),                    // X position for actual pixel.
-            		.y_px(y_px)                     // Y position for actual pixel.
+            		.y_px(y_px),                    // Y position for actual pixel.
+                    .px_clk(px_clk)
                     );
        
     // Instanciate 'sound_controller' module.
@@ -60,7 +60,7 @@ module top (
     // Instanciate 'logo' module.
     logo
     logo01 (
-            .clk (clk),                     // Input clock: 12MHz
+            .clk (px_clk),                     // Input clock: 12MHz
             .clr (clr),                     // Asynchronous reset
             .color_px (color_px),           // Color RGB (16 colors) for actual pixel.
             .x_px(x_px),                    // Position x actual pixel.
