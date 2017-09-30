@@ -84,7 +84,7 @@ module dinamic (
         // Actualize x. Any border in x? Change velocity direction.
         // Note: For a correct working this was to be a blobking assingment (this =, not this <=).
         x_logo = x_logo + incx;
-        if ((x_logo > x_logo_max) || (x_logo < x_logo_min))
+        if ((x_logo > x_logo_max) || (x_logo <= x_logo_min))
         begin
             incx <= -incx;
             //mute = 0;
@@ -93,7 +93,7 @@ module dinamic (
             
         // Actualize y. Any border in y? Change velocity direction.            
         y_logo = y_logo + incy;
-        if ((y_logo > y_logo_max) || (y_logo < y_logo_min))
+        if ((y_logo > y_logo_max) || (y_logo <= y_logo_min))
         begin
             incy <= -incy;
             //mute = 0;
