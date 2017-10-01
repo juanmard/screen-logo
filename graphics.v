@@ -25,9 +25,13 @@ module graphics (
                 );
     
     // Some colors.
+    parameter [2:0] black = 3'b000;
     parameter [2:0] blue  = 3'b001;
     parameter [2:0] green = 3'b010;
     parameter [2:0] white = 3'b111;
+    
+    parameter ink = green;
+    parameter background = white;
 
 	// Logo dimension.
     parameter width_logo = 80;
@@ -59,12 +63,12 @@ module graphics (
         if ((x_px >= x_logo) && (x_px < x_logo + width_logo) && (y_px >= y_logo) && (y_px < y_logo + height_logo))   
         begin
             if (pixel)
-                color_px = green;
+                color_px = ink;
             else
-                color_px = white;
+                color_px = background;
         end
         else
            //color_px = blue;
-           color_px = white;
+           color_px = background;
     end
 endmodule
