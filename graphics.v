@@ -1,17 +1,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-// 
-// Create Date: 19:33:28 19/09/2017 
+//
+// Create Date: 19:33:28 19/09/2017
 // Module Name: graphics
 // Description: Graphics logo behaviour.
 //
 // Dependencies: image
 //
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created
 //
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 module graphics (
@@ -23,13 +23,13 @@ module graphics (
                 input wire [9:0]  y_logo,     // Y position actual logo.
                 output reg [2:0]  color_px    // Actual pixel color.
                 );
-    
+
     // Some colors.
     parameter [2:0] black = 3'b000;
     parameter [2:0] blue  = 3'b001;
     parameter [2:0] green = 3'b010;
     parameter [2:0] white = 3'b111;
-    
+
     parameter ink = green;
     parameter background = white;
 
@@ -38,10 +38,10 @@ module graphics (
     parameter height_logo = 96;
 
     // Position x and y from image (128x128 pixels).
-    reg [9:0] x_img;
-    reg [9:0] y_img;
-    reg pixel;
-   
+    wire [9:0] x_img;
+    wire [9:0] y_img;
+    wire pixel;
+
     // Instance of image logo.
     image
     image01 (
@@ -60,7 +60,7 @@ module graphics (
     begin
         // If we're inside the logo, get pixel from image block and
         // if it's a pixel, draw in green.
-        if ((x_px >= x_logo) && (x_px < x_logo + width_logo) && (y_px >= y_logo) && (y_px < y_logo + height_logo))   
+        if ((x_px >= x_logo) && (x_px < x_logo + width_logo) && (y_px >= y_logo) && (y_px < y_logo + height_logo))
         begin
             if (pixel)
                 color_px = ink;

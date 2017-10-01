@@ -1,17 +1,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-// 
-// Create Date: 19:12:32 19/09/2017 
+//
+// Create Date: 19:12:32 19/09/2017
 // Module Name: logo
 // Description: Complete logo behaviour (dinamic, graphics and sound).
 //
 // Dependencies: dinamic, graphics
 //
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created
 //
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 module logo (
@@ -23,12 +23,12 @@ module logo (
                 input  wire        inc_vel,     // Increase velocity.
                 input  wire        dec_vel,     // Decrease velocity.
                 output wire        mute,        // Silence the sound.
-                output wire [1:0]  code_sound   // Code of sound (ping, pong, go, stop). 
+                output wire [1:0]  code_sound   // Code of sound (ping, pong, go, stop).
             );
-    
-    // Registers with logo position. 
-    reg [10:0] x_logo;
-    reg [10:0] y_logo;
+
+    // Registers with logo position.
+    reg [9:0] x_logo;
+    reg [9:0] y_logo;
 /*
     always @(posedge clk)
     begin
@@ -38,7 +38,7 @@ module logo (
             y_logo = (480-96)/2;
         end
     end
-*/  
+*/
     // Instance of dinamic part of logo.
     dinamic
     dinamic01 (

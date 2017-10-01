@@ -1,17 +1,19 @@
+`default_nettype none
+
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-// 
-// Create Date:    20:24:48 20/09/2017 
+//
+// Create Date:    20:24:48 20/09/2017
 // Module Name:    top
 // Project Name:   screen-logo
-// Description:    
+// Description:
 //
-// Dependencies: graphics, dinamic, vga_controller, sound_controller 
+// Dependencies: graphics, dinamic, vga_controller, sound_controller
 //
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 module top (
@@ -22,17 +24,19 @@ module top (
             output wire red_monitor,     // Red VGA signal (pin 1 male monitor).
             output wire green_monitor,   // Green VGA signal (pin 2 male monitor).
             output wire blue_monitor,    // Blue VGA signal (pin 3 male monitor).
-            output wire [1:0] code_sound,// Debug for the sound. 
-            output wire sound,           // PWM signal for the sound (for a future). 
-            input wire  inc_vel,         // Increment logo velocity. 
+            output wire [1:0] code_sound,// Debug for the sound.
+            output wire sound,           // PWM signal for the sound (for a future).
+            input wire  inc_vel,         // Increment logo velocity.
             input wire  dec_vel          // Decrement logo velocity.
         );
 
-    reg  [9:0] x_px;
-    reg  [9:0] y_px;
+    wire  [9:0] x_px;
+    wire  [9:0] y_px;
     wire [2:0] color_px;
     wire px_clk;
-    
+
+    wire mute;
+
     // Instanciate 'vga_controller' module.
     vga_controller
     vga_controller01 (
@@ -47,7 +51,7 @@ module top (
             		.y_px(y_px),                    // Y position for actual pixel.
                     .px_clk(px_clk)
                     );
-       
+
     // Instanciate 'sound_controller' module.
     sound_controller
     sound_controller01 (
@@ -66,7 +70,7 @@ module top (
             .x_px(x_px),                    // Position x actual pixel.
             .y_px(y_px),                    // Position y actual pixel.
             .mute(mute),                    // Mute signal for a sound.
-            .code_sound(code_sound),        // Code sound for a sound controller (for a future). 
+            .code_sound(code_sound),        // Code sound for a sound controller (for a future).
             .inc_vel (inc_vel),             // Increment logo velocity.
             .dec_vel (dec_vel)             // Decrement logo velocity.
           );
