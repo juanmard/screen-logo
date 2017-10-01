@@ -9,3 +9,4 @@ set_io   inc_vel           10
 set_io   dec_vel           11
 set_io   code_sound[1]     104
 set_io   code_sound[0]     102
+set_io   sound             119
