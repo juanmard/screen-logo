@@ -1,28 +1,28 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-// 
-// Create Date:    09:34:23 30/09/2017 
+//
+// Create Date:    09:34:23 30/09/2017
 // Module Name:    vga_controller
 // Description:    Basic control for 640x480@72Hz VGA signal.
 //
-// Dependencies: 
+// Dependencies:
 //
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created for Roland Coeurjoly (RCoeurjoly) in 640x480@85Hz.
 // Revision 0.02 - Change for 640x480@60Hz.
 // Revision 0.03 - Solved some mistakes.
 // Revision 0.04 - Change for 640x480@72Hz and output signals 'activevideo'
 //                 and 'px_clk'.
 //
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 module vga_controller (
             input wire       clk,           // Input clock: 12MHz
             input wire [2:0] color_px,      // Color RGB (16 colors) for actual pixel.
-            output reg       hsync,         // Horizontal sync out
-            output reg       vsync,         // Vertical sync out
+            output wire       hsync,         // Horizontal sync out
+            output wire       vsync,         // Vertical sync out
             output reg       red_monitor,   // RED vga outputapio --board icezum
             output reg       green_monitor, // GREEN vga output
             output reg       blue_monitor,  // BLUE vga output
@@ -50,14 +50,13 @@ module vga_controller (
     // FILTER_RANGE: 1 (3'b001)
     //
 	// Pixel clock.
-    wire px_clk;
 
     SB_PLL40_CORE #(.FEEDBACK_PATH("SIMPLE"),
                     .PLLOUT_SELECT("GENCLK"),
                     .DIVR(4'b0000),
                     .DIVF(7'b1010011),
                     .DIVQ(3'b101),
-                    .FILTER_RANGE(3'b001),
+                    .FILTER_RANGE(3'b001)
             )
             uut
             (
@@ -132,8 +131,7 @@ module vga_controller (
      end
 
     // Generate sync pulses (active low) and active video.
-    wire activevideo;
-   
+
     assign hsync = (hc >= hfp && hc < hfp + hpulse) ? 0:1;
     assign vsync = (vc >= vfp && vc < vfp + vpulse) ? 0:1;
     assign activevideo = (hc >= blackH && vc >= blackV) ? 1:0;

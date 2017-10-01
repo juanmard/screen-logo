@@ -1,33 +1,33 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-// 
-// Create Date: 09:30:38 19/09/2017 
+//
+// Create Date: 09:30:38 19/09/2017
 // Module Name: image
 // Description: Image with logo for screen-saver.
 //
-// Dependencies: 
+// Dependencies:
 //
-// Revision: 
+// Revision:
 // Revision 0.01 - File Created
 //
-// Additional Comments: 
+// Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
 module image (
                 input  wire clk,            // System clock.
-                input  wire [9:0] x_img,    // X position in image. 
+                input  wire [9:0] x_img,    // X position in image.
                 input  wire [9:0] y_img,    // Y position in image.
                 output reg  pixel           // Pixel (B&W) in x and y positon.
              );
 
-    // Image name file in binary ASCII code. 
-    parameter FILE_LOGO = "logo.txt";
-    
+    // Image name file in binary ASCII code.
+    localparam FILE_LOGO = "logo.list";
+
     // Width and height image.
     parameter width = 80;
     parameter height = 96;
-    
+
     // Memory
     reg [width-1:0] logo [height-1:0];
 
