@@ -47,7 +47,7 @@ module top (
                     .x_px(x_px),                    // X position for actual pixel.
             		.y_px(y_px)                     // Y position for actual pixel.
                     );
-        
+/*       
     // Instanciate 'sound_controller' module.
     sound_controller
     sound_controller01 (
@@ -56,7 +56,7 @@ module top (
                         .code_sound (code_sound),
                         .sound (sound)
                       );
-    
+*/   
     // Instanciate 'logo' module.
     logo
     logo01 (
