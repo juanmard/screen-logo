@@ -55,7 +55,7 @@
           "id": "776ef215-79dc-400a-96cf-16949a00d99c",
           "type": "basic.output",
           "data": {
-            "name": "color_pc",
+            "name": "color_px",
             "range": "[2:0]",
             "pins": [
               {
