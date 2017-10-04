@@ -131,7 +131,6 @@ module vga_controller (
      end
 
     // Generate sync pulses (active low) and active video.
-
     assign hsync = (hc >= hfp && hc < hfp + hpulse) ? 0:1;
     assign vsync = (vc >= vfp && vc < vfp + vpulse) ? 0:1;
     assign activevideo = (hc >= blackH && vc >= blackV) ? 1:0;

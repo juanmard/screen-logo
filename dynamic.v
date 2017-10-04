@@ -3,8 +3,8 @@
 // Engineer: Juan Manuel Rico
 //
 // Create Date: 09:30:38 19/09/2017
-// Module Name: dinamic
-// Description: Dinamic debounce logo behaviour like in a screen-saver.
+// Module Name: dynamic
+// Description: Dynamic debounce logo behaviour like in a screen-saver.
 //
 // Dependencies:
 //
@@ -14,15 +14,15 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
-module dinamic (
+module dynamic (
                 input wire        clk,         // System clock.
                 input wire        clr,         // Asynchronous reset.
-                input wire [9:0]  x_logo,      // X position for actual logo.
-                input wire [9:0]  y_logo,      // Y position for actual logo.
+                output reg [9:0]  x_logo,      // X position for actual logo.
+                output reg [9:0]  y_logo,      // Y position for actual logo.
                 input wire        inc_vel,     // Increase velocity.
                 input wire        dec_vel,     // Decrease velocity.
                 output reg        mute,        // Silence actual sound.
-                output reg [1:0] code_sound   // Code of sound (silence, ping, pong, go).
+                output reg [1:0]  code_sound   // Code of sound (silence, ping, pong, go).
                );
 
 

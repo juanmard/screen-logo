@@ -4,9 +4,9 @@
 //
 // Create Date: 19:12:32 19/09/2017
 // Module Name: logo
-// Description: Complete logo behaviour (dinamic, graphics and sound).
+// Description: Complete logo behaviour (dynamic, graphics and sound).
 //
-// Dependencies: dinamic, graphics
+// Dependencies: dynamic.v, graphics.v
 //
 // Revision:
 // Revision 0.01 - File Created
@@ -27,8 +27,8 @@ module logo (
             );
 
     // Registers with logo position.
-    reg [9:0] x_logo;
-    reg [9:0] y_logo;
+    wire [9:0] x_logo;
+    wire [9:0] y_logo;
 /*
     always @(posedge clk)
     begin
@@ -39,9 +39,9 @@ module logo (
         end
     end
 */
-    // Instance of dinamic part of logo.
-    dinamic
-    dinamic01 (
+    // Instance of dynamic part of logo.
+    dynamic
+    dynamic01 (
             .clk (clk),
             .clr (clr),
             .x_logo (x_logo),
