@@ -1,30 +1,29 @@
 //////////////////////////////////////////////////////////////////////////////////
 // Company: Ridotech
 // Engineer: Juan Manuel Rico
-//
-// Create Date: 09:30:38 19/09/2017
-// Module Name: dynamic
+// 
+// Create Date: 09:30:38 19/09/2017 
+// Module Name: dinamic
 // Description: Dynamic debounce logo behaviour like in a screen-saver.
 //
-// Dependencies:
+// Dependencies: 
 //
-// Revision:
+// Revision: 
 // Revision 0.01 - File Created
 //
-// Additional Comments:
+// Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
 module dynamic (
-                input wire        clk,         // System clock.
-                input wire        clr,         // Asynchronous reset.
-                output reg [9:0]  x_logo,      // X position for actual logo.
-                output reg [9:0]  y_logo,      // Y position for actual logo.
-                input wire        inc_vel,     // Increase velocity.
-                input wire        dec_vel,     // Decrease velocity.
-                output reg        mute,        // Silence actual sound.
-                output reg [1:0]  code_sound   // Code of sound (silence, ping, pong, go).
+                input wire        clk,        // System clock.
+                input wire        clr,        // Asynchronous reset.
+                output reg [9:0]  x_logo,     // X position for actual logo.
+                output reg [9:0]  y_logo,     // Y position for actual logo.
+                input wire        inc_vel,    // Increase velocity.
+                input wire        dec_vel,    // Decrease velocity.
+                output wire       mute,       // Silence actual sound.
+                output wire [1:0] code_sound  // Code of sound (silence, ping, pong, go). 
                );
-
 
     // Sounds definition.
     parameter [1:0] ping = 2'b10;
@@ -88,7 +87,7 @@ module dynamic (
         begin
             incx <= -incx;
             //mute = 0;
-            code_sound = pong;
+            //code_sound <= pong;
         end
 
         // Actualize y. Any border in y? Change velocity direction.
@@ -97,7 +96,7 @@ module dynamic (
         begin
             incy <= -incy;
             //mute = 0;
-            code_sound = ping;
+            //code_sound <= ping;
         end
     end
 endmodule
