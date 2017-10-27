@@ -46,6 +46,8 @@ module logo (
             .clr (clr),
             .x_logo (x_logo),
             .y_logo (y_logo),
+			.x_pix	(x_px),
+			.y_pix	(y_px),
             .inc_vel (inc_vel),
             .dec_vel (dec_vel),
             .mute(mute),
