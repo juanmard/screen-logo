@@ -55,7 +55,7 @@ module dynamic (
 	reg dy;
 	wire endframe;
 	
-	// initialization of logo location, direction and speed just for simulation
+	// initialization of logo location, direction and speed 
 	initial
     begin
 		x_logo <= (640 - width_logo)/4;
@@ -80,8 +80,8 @@ module dynamic (
 		end
 		else
 		begin
-		if (endframe)
-		begin
+			if (endframe)
+			begin
 				// bounce with vertical borders
 				if (x_logo>=x_logo_max  || x_logo>=(VISIBLECOLS-SPEED-border) || x_logo<border || x_logo<SPEED) 
 				begin	
@@ -112,9 +112,8 @@ module dynamic (
 				else 
 					if (dec_vel && SPEED > 0) 
 						SPEED = SPEED -1;
-
 		end	
-		end
+	end
     end
 	
 endmodule
