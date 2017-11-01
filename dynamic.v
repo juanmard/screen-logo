@@ -51,10 +51,11 @@ module dynamic (
 
 	//speed and direction regs;
 	reg [4:0] SPEED;
-	reg dx,dy;
+	reg dx;
+	reg dy;
 	wire endframe;
 	
-	// initialization of logo location, direction and speed
+	// initialization of logo location, direction and speed just for simulation
 	initial
     begin
 		x_logo <= (640 - width_logo)/4;
@@ -63,28 +64,23 @@ module dynamic (
 		dy <=0;
 		SPEED <= 1;
     end
-	
+
 	assign endframe = (x_pix==VISIBLECOLS-1 && y_pix==VISIBLEROWS-1)? 1'b1 : 1'b0 ;
 	
-	// Behaviour debounce.
-    always @(posedge clk)
-    begin
-        if (clr)
-        // If clr active, go back to initial values.
-        begin
-           //incx = 1;
-           //incy = 2;
-		   //x_logo = (640 - width_logo)/2;
-		   //y_logo = (480 - height_logo)/2;
-           //mute = 0;
-           //code_sound = go;
-        end
-    end
 	
 	// Update logo 
-	always @(posedge clk )
+	always @(posedge clk or posedge clr )
     begin
- 		if (endframe)
+ 		if (clr)
+		begin	
+			dx<=0; dy<=0;
+			x_logo <= (640 - width_logo)/2;
+		    y_logo <= (480 - height_logo)/2;
+			SPEED <= 1;
+		end
+		else
+		begin
+		if (endframe)
 		begin
 				// bounce with vertical borders
 				if (x_logo>=x_logo_max  || x_logo>=(VISIBLECOLS-SPEED-border) || x_logo<border || x_logo<SPEED) 
@@ -117,7 +113,8 @@ module dynamic (
 					if (dec_vel && SPEED > 0) 
 						SPEED = SPEED -1;
 
-		end		
+		end	
+		end
     end
 	
 endmodule
